@@ -1,0 +1,28 @@
+# Development and tests only (uv). The extension's bundled environment is pixi.toml (KN-DD-03).
+[project]
+name = "silverpoint-knime"
+version = "0.1.0"
+description = "KNIME nodes that draw silverpoint charts from a table."
+requires-python = ">=3.11"
+dependencies = ["silverpoint==0.11.0.post1", "pandas>=2,<3"]  # KNIME 5.x bundles pandas 2
+
+[dependency-groups]
+dev = ["pytest>=8", "ruff>=0.8", "zstandard>=0.22", "pyarrow>=15", "pytz", "markdown", "pyyaml"]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+extend-exclude = ["src/silverpoint_knime/nodes/*.py"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+filterwarnings = ["ignore:Could not read"]

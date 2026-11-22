@@ -1,0 +1,46 @@
+# The extension's bundled environment (KN-DD-03, KN-Art. 2): everything the nodes need, offline.
+# The pin (H-2) is the `silverpoint` version below; the engine arrives inside it.
+[workspace]
+name = "silverpoint-knime"
+channels = ["knime", "conda-forge"]
+platforms = ["linux-64", "osx-64", "osx-arm64", "win-64"]
+
+[dependencies]
+python = "3.11.*"
+knime-extension = "5.9.*"
+knime-python-base = "5.9.*"
+# KNIME's pins for 5.9 (pandas, pyarrow, …): the environment it shares with the Analytics Platform's own,
+# as knime-extension-bundling requires (KN-T-08).
+knime-python-versions = "5.9.*"
+pandas = ">=2,<3"
+
+[pypi-dependencies]
+silverpoint = "==0.11.0.post1"
+
+[feature.build.dependencies]
+knime-extension-bundling = "5.9.*"
+# The bundler's Tycho 4.0.7 fails under Maven 3.10 ("No implementation for MavenTargetLocationFactory").
+maven = "3.9.*"
+python = "3.11.*"
+zstandard = "*"  # the bundler reads the .conda packages' licences with it
+
+[feature.build.tasks]
+build = { args = [{ "arg" = "dest", "default" = "./local-update-site" }], cmd = "python ./.pixi/envs/build/bin/build_python_extension.py --update-sites-version 5.9 --excluded-files .github .pytest_cache .ruff_cache .venv .idea CLAUDE.md specs scripts tests pyproject.toml uv.lock -- . {{ dest }}" }
+# --update-sites-version 5.9: the default, latest, resolves KNIME 5.11 bundles against this 5.9 extension.
+# --excluded-files: development only; the plugin carries src/, icons/, demo/, the manifests and LICENSE.
+
+# KN-REQ-009, H-4: the tests and the conformance kit in the bundled environment itself (with Node.js for
+# the kit and the SVG port). Not ruff: knime-python-versions pins its own, so the generation check (H-3),
+# which formats with ruff, runs in the uv job.
+[feature.test.dependencies]
+pytest = ">=8"
+pyyaml = "*"
+nodejs = ">=20"
+
+[feature.test.tasks]
+conformance = "python scripts/conformance.py"
+test = "pytest --deselect tests/test_generated.py::test_generated_files_are_current"
+
+[environments]
+build = { features = ["build"], no-default-feature = true }
+test = { features = ["test"], solve-group = "default" }

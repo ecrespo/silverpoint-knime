@@ -1,0 +1,18 @@
+name: silverpoint
+author: Ernesto Crespo
+pixi_toml_path: pixi.toml
+extension_module: src/extension
+description: silverpoint charts in KNIME — one view node per chart, drawn from a table.
+long_description: >-
+  One view node per silverpoint chart that a table can feed (56 of them), under Community ›
+  Silverpoint, grouped by family. Each node takes a table, a column per role and the chart's options,
+  and shows a self-contained, accessible HTML view (keyboard reading, a readout, a tabular
+  alternative). With Node.js 20+ it also writes the chart as SVG on an image port, so the view is
+  report-ready. Drawn by the silverpoint Python package, which carries the library's own script; no
+  network call is made at execution.
+categories:
+  - Visualization
+group_id: io.github.ecrespo  # with `name`, the extension id: io.github.ecrespo.silverpoint
+version: 0.1.0
+vendor: Ernesto Crespo
+license_file: LICENSE
