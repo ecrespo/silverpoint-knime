@@ -19,3 +19,7 @@ KNIME Analytics Platform **5.12.0** (Linux x86_64), `/home/ernesto/knime_5.12.0`
 | Step | Finding |
 |---|---|
 | Install | The local update site (built for 5.9 with `--update-sites-version 5.9`) installs with the p2 director (`-installIU io.github.ecrespo.features.silverpoint.feature.group`): "Overall install request is satisfiable", 65 s. The plugin requires `[5.9.0,6.0.0)`, so 5.9–5.12 resolve it. |
+| Python node settings | KNIME 5.12 saves a pure-Python node's parameters flat under `model`, followed by `json-type_Internals = OBJECT` and `extension_version_Internals`; `factory_settings` holds `extension_id` (group_id.name) and `node_id` (the `@knext.node` id), with `factory-id-uniquifier` = `<extension_id>_!_<node_id>`. Without `json-type_Internals` the dialog fails ("Unexpected settings node: model") and the node runs on defaults. |
+| CSV Reader settings | 5.12 migrates the classic (5.x) CSV Reader settings on load and saves its new format, which earlier versions do not read; the generator writes the classic one. In it, `num_columns` and `intersection_indices` sit inside `table_transformation/columns`. |
+| Example workflow | Imported and executed: Line, Area and Step draw from the CSV (KN-REQ-008). |
+

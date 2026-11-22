@@ -28,7 +28,7 @@ and `pyproject.toml`; its engine is verified against the hosts kit's `integrity.
    SVG port; without Node.js the port holds a notice and the node warns.
 
 Every setting is controllable by a flow variable — ground, mode and palette among them. Nothing is
-fetched at execution: the chart's script travels inside the view. `demo/hits-per-hour.csv` is a small
+fetched at execution: the chart's script travels inside the view. `workflows_examples/silverpoint-example.knwf` is a ready example (import it with *File › Import KNIME Workflow…*), and `demo/hits-per-hour.csv` is a small
 dataset to try the line, area and step charts on.
 
 ## Development

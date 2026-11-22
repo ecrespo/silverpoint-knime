@@ -21,8 +21,7 @@ the four files are its split, unchanged.
 Implemented 2026-11-21: KN-T-01, -03, -04, -05, -07 (ledger in `specs/tasks.md`, findings in
 `specs/poc.md`). 2026-11-22: the 0.11 line (`silverpoint==0.11.0.post1` from PyPI, engine 0.11.0), the tests in the bundled
 environment (`pixi run -e test test`), the update site builds locally (`pixi run -e build build`, pixi
-0.47). Open: the Analytics Platform half of KN-T-02, the example workflow (KN-T-06), the release and
-the Community Hub decision (KN-T-08, KN-OQ-1); KN-D5: the dialog offers no `names` / `nodes` (not in the host catalog).
+0.47). The example workflow (KN-T-06, `workflows_examples/`, `scripts/make_example_workflow.py`) runs in AP 5.12; release `v0.1.0` is on GitHub. Open: the rest of KN-T-02 (keyboard reading, load time, the image port without Node), the Community Hub submission (KN-T-08, KN-OQ-1); KN-D5: the dialog offers no `names` / `nodes` (not in the host catalog).
 
 Commands: `uv sync`, `uv run python scripts/knime_api.py`, `uv run python scripts/make_nodes.py
 --check`, `uv run python scripts/conformance.py`, `uv run pytest`, `uv run ruff check .`.
