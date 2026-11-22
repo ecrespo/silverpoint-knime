@@ -8,6 +8,15 @@ and, with Node.js 20+, writes the chart as SVG on an image port so the view is r
 Draws with **silverpoint 0.11** (the `silverpoint` Python package 0.11.0.post1 from PyPI, engine 0.11.0, pinned in `pixi.toml`
 and `pyproject.toml`; its engine is verified against the hosts kit's `integrity.json`).
 
+## Install
+
+1. Download `silverpoint-knime-<version>-update-site.zip` from the
+   [releases](https://github.com/ecrespo/silverpoint-knime/releases).
+2. In KNIME Analytics Platform (5.9 or later): *File › Preferences › Install/Update › Available
+   Software Sites › Add… › Archive…*, pick the zip.
+3. *File › Install KNIME Extensions…*, search for *silverpoint*, install and restart. The first use
+   creates the extension's Python environment (offline: everything is in the zip).
+
 ## Using a node
 
 1. Drag *Silverpoint Line chart* (or any other) onto the canvas and connect a table.
