@@ -9,7 +9,7 @@
 - [x] **KN-T-03** `scripts/make_nodes.py` and `--check`. *KN-REQ-001, KN-REQ-002, H-3*
 - [x] **KN-T-04** Execution: table → `silverpoint` → view; errors; the row limit. *KN-REQ-003, KN-REQ-004, KN-REQ-005*
 - [x] **KN-T-05** The image port and the runtime preference. *KN-REQ-006*
-- [ ] **KN-T-06** Flow variables; the example workflow. *KN-REQ-007, KN-REQ-008*
+- [x] **KN-T-06** Flow variables; the example workflow. *KN-REQ-007, KN-REQ-008*
 - [x] **KN-T-07** CI: the bundled environment, the conformance check, every node against its demo. *KN-REQ-009, H-4*
 - [ ] **KN-T-08** Bundle the update site; README; release `0.1.0`; read the Community Hub's requirements and decide on publication. *KN-OQ-1*
 
@@ -111,3 +111,15 @@ Following silverpoint 0.11 (H-2's four steps): bump → regenerate → kit → r
   Listing only text columns hid the common case (an hour, a year, an id read as a number by the CSV
   Reader: `demo/hits-per-hour.csv`'s `hour`). Number, date and boolean roles keep their filter.
   KN-REQ-002 reads "filtered by the role's data type"; to review.
+
+## The example workflow (2026-11-22)
+
+- **KN-T-06 / KN-REQ-008**: `workflows_examples/silverpoint-example/` (and its `.knwf`), written by
+  `scripts/make_example_workflow.py` from the generated nodes' own parameters: a CSV Reader on the
+  bundled `data/hits-per-hour.csv` (`hour` as String) feeding the Line (secondary = baseline), Area
+  (sanguine palette) and Step (cyanotype ground) nodes. Imported into KNIME AP 5.12.0 and executed:
+  the three views draw. The Batch Executor is not installed in that AP, so the run was in the GUI.
+- **Release 0.1.0** (KN-T-08): tag `v0.1.0` on `main`, the update site zip (silverpoint
+  0.11.0.post1) attached to the GitHub release. Community Hub: submission by e-mail to
+  community-contributions@knime.com (experimental first; trusted needs testflows per node).
+

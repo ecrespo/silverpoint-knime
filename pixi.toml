@@ -25,7 +25,7 @@ python = "3.11.*"
 zstandard = "*"  # the bundler reads the .conda packages' licences with it
 
 [feature.build.tasks]
-build = { args = [{ "arg" = "dest", "default" = "./local-update-site" }], cmd = "python ./.pixi/envs/build/bin/build_python_extension.py --update-sites-version 5.9 --excluded-files .github .pytest_cache .ruff_cache .venv .idea CLAUDE.md specs scripts tests pyproject.toml uv.lock -- . {{ dest }}" }
+build = { args = [{ "arg" = "dest", "default" = "./local-update-site" }], cmd = "python ./.pixi/envs/build/bin/build_python_extension.py --update-sites-version 5.9 --excluded-files .github workflows_examples .pytest_cache .ruff_cache .venv .idea CLAUDE.md specs scripts tests pyproject.toml uv.lock -- . {{ dest }}" }
 # --update-sites-version 5.9: the default, latest, resolves KNIME 5.11 bundles against this 5.9 extension.
 # --excluded-files: development only; the plugin carries src/, icons/, demo/, the manifests and LICENSE.
 
